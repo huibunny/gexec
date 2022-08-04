@@ -190,7 +190,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:8820",
 	BasePath:         "/v1",
 	Schemes:          []string{},
-	Title:            "guser API",
+	Title:            "gexec API",
 	Description:      "Using a translation service as an example",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

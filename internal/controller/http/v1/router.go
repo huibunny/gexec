@@ -10,19 +10,19 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 
 	// Swagger docs.
-	_ "guser/docs"
-	"guser/internal/usecase"
-	"guser/pkg/logger"
+	_ "gexec/docs"
+	"gexec/internal/usecase"
+	"gexec/pkg/logger"
 )
 
 // NewRouter -.
 // Swagger spec:
-// @title       guser API
+// @title       gexec API
 // @description Using a translation service as an example
 // @version     1.0
 // @host        localhost:8820
 // @BasePath    /v1
-func NewRouter(handler *gin.Engine, l logger.Interface, t usecase.Login) {
+func NewRouter(handler *gin.Engine, l logger.Interface, t usecase.Exec) {
 	// Options
 	handler.Use(gin.Logger())
 	handler.Use(gin.Recovery())
@@ -40,6 +40,6 @@ func NewRouter(handler *gin.Engine, l logger.Interface, t usecase.Login) {
 	// Routers
 	h := handler.Group("/v1")
 	{
-		newLoginRoutes(h, t, l)
+		newExecRoutes(h, t, l)
 	}
 }

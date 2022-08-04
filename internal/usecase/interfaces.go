@@ -4,20 +4,21 @@ package usecase
 import (
 	"context"
 
-	"guser/internal/entity"
+	"gexec/internal/entity"
 )
 
 //go:generate mockgen -source=interfaces.go -destination=./mocks_test.go -package=usecase_test
 
 type (
 	// Login -.
-	Login interface {
-		Login(context.Context, entity.User) (int, string, error)
-		LoginWx(context.Context, string) (int, string, error)
+	Exec interface {
+		Save(context.Context, entity.User) error
+		Query(context.Context, entity.User) error
 	}
 
-	// UserRepo -.
-	UserRepo interface {
-		Login(context.Context) error
+	// ExecRepo -.
+	ExecRepo interface {
+		Save(context.Context) error
+		Query(context.Context) error
 	}
 )

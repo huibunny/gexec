@@ -9,13 +9,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"guser/config"
-	v1 "guser/internal/controller/http/v1"
-	"guser/internal/usecase"
-	"guser/internal/usecase/repo"
-	"guser/pkg/httpserver"
-	"guser/pkg/logger"
-	"guser/pkg/postgres"
+	"gexec/config"
+	v1 "gexec/internal/controller/http/v1"
+	"gexec/internal/usecase"
+	"gexec/internal/usecase/repo"
+	"gexec/pkg/httpserver"
+	"gexec/pkg/logger"
+	"gexec/pkg/postgres"
 )
 
 // Run creates objects via constructors.
@@ -32,7 +32,7 @@ func Run(cfg *config.Config, port string) {
 	defer pg.Close()
 
 	// Use case
-	loginUserCase := usecase.New(repo.New(pg), cfg.App.TokenExpire, cfg.App.Secret, cfg.Wx.AppID, cfg.Wx.AppSecret)
+	loginUserCase := usecase.New(repo.New(pg))
 	// HTTP Server
 	handler := gin.New()
 	v1.NewRouter(handler, l, loginUserCase)

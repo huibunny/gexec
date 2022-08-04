@@ -5,8 +5,8 @@ import (
 	"log"
 	"strings"
 
-	"guser/config"
-	"guser/internal/app"
+	"gexec/config"
+	"gexec/internal/app"
 
 	consulutil "github.com/huibunny/gocore/thirdpart/consul"
 )

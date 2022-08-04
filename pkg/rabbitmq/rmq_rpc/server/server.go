@@ -7,8 +7,8 @@ import (
 
 	"github.com/streadway/amqp"
 
-	"guser/pkg/logger"
-	rmqrpc "guser/pkg/rabbitmq/rmq_rpc"
+	"gexec/pkg/logger"
+	rmqrpc "gexec/pkg/rabbitmq/rmq_rpc"
 )
 
 const (

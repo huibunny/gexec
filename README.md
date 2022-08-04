@@ -1,4 +1,18 @@
-# go-clean-template
+# gexec
+
+## sql
+
+```sql
+
+select
+	column_name,
+	data_type
+from
+	information_schema."columns" c
+where
+	table_name = 't_user'
+
+```
 
 ## build
 
@@ -10,7 +24,7 @@
 $ swag init --parseDependency --parseInternal -g cmd/app/main.go
 # $ swag init -g internal/controller/http/v1/router.go
 
-# run build.sh and it will output guser file.
+# run build.sh and it will output gexec file.
 $ ./build.sh
 
 ```

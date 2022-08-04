@@ -52,7 +52,7 @@ host: localhost:8820
 info:
   contact: {}
   description: Using a translation service as an example
-  title: guser API
+  title: gexec API
   version: "1.0"
 paths:
   /user/login:

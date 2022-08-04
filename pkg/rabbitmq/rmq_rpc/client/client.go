@@ -10,7 +10,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/streadway/amqp"
 
-	rmqrpc "guser/pkg/rabbitmq/rmq_rpc"
+	rmqrpc "gexec/pkg/rabbitmq/rmq_rpc"
 )
 
 // ErrConnectionClosed -.
