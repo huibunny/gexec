@@ -37,6 +37,14 @@ $ ./goclean -consul localhost:8500 -name hello -listen :9090
 
 ```
 
+## test
+
+```bash
+
+curl -X POST -d '{"tableinfo": [{"table": "t_app", "columns": ["name", "icon", "cover"], "values": [["note", "https://bn.com/note.png", "https://bn.com/cover.png"]]}, {"table": "t_apptype_rel", "columns": ["app_id", "type_id"], "values": [[1, 2], [2, 3]]}]}' 'http://localhost:8830/v1/exec/save'
+
+```
+
 ## function
 
 * remove http port from config file and use the one from cmd arguments.

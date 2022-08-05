@@ -12,8 +12,8 @@ import (
 type (
 	// Login -.
 	Exec interface {
-		Save(context.Context, entity.User) error
-		Query(context.Context, entity.User) error
+		Save(context.Context, []entity.TableEntity) error
+		Query(context.Context, entity.TableEntity) error
 	}
 
 	// ExecRepo -.

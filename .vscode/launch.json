@@ -11,7 +11,7 @@
             "mode": "auto",
             "program":"${workspaceFolder}/cmd/app/main.go",
             "args": [ "-consul", "172.16.12.11:8500", "-name", "app", "-folder", "dev", "-listen", ":8830"],              
-            "console": "integratedTerminal"
+            "console": "integratedTerminal"            
         }
     ]
 }

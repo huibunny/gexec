@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"gexec/internal/entity"
 	"gexec/internal/usecase"
 	"gexec/pkg/logger"
 )
@@ -29,7 +30,7 @@ type saveResponse struct {
 }
 
 type doSaveRequest struct {
-	Values [][][]interface{} `json:"values" binding:"required"  example:"[[[Alice,1,21]], [Shanghai,2000]]"`
+	TableInfo []entity.TableEntity `json:"tableinfo" example:"[{table:t_app,columns:[name,icon,cover],values:[[note,https://bn.com/note.png,https://bn.com/cover.png]]}]"`
 }
 
 type queryResponse struct {
@@ -47,11 +48,11 @@ type doQueryRequest struct {
 // @Tags  	    Save
 // @Accept      json
 // @Produce     json
-// @Param       request body doLoginRequest true "Save System"
-// @Success     200 {object} loginResponse
+// @Param       request body doSaveRequest true "Save System"
+// @Success     200 {object} saveResponse
 // @Failure     400 {object} response
 // @Failure     500 {object} response
-// @Router      /exec/Save [post]
+// @Router      /exec/save [post]
 func (r *execRoutes) save(c *gin.Context) {
 	var request doSaveRequest
 	if err := c.ShouldBindJSON(&request); err != nil {
@@ -61,7 +62,13 @@ func (r *execRoutes) save(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, saveResponse{ErrCode: 0})
+	err := r.t.Save(c, request.TableInfo)
+	if err != nil {
+		r.l.Error("fail to save entity value, error: %v.", err)
+		c.JSON(http.StatusOK, saveResponse{ErrCode: 1})
+	} else {
+		c.JSON(http.StatusOK, saveResponse{ErrCode: 0})
+	}
 }
 
 // @Summary     Query
